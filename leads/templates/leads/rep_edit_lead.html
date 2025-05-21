@@ -1,40 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Lead</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 1rem;
-      margin: 0;
-    }
-
-    input, textarea, button {
-      width: 100%;
-      margin-bottom: 0.75rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-  </style>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
   <h2>Edit Lead</h2>
   <form method="post">{% csrf_token %}
-    <input name="name" value="{{ lead.name }}" placeholder="Name"><br>
-    <input name="email" value="{{ lead.email }}" placeholder="Email"><br>
-    <input name="phone" value="{{ lead.phone }}" placeholder="Phone"><br>
-    <input name="address" value="{{ lead.address }}" placeholder="Address"><br>
-    <input name="city" value="{{ lead.city }}" placeholder="City"><br>
-    <input name="state" value="{{ lead.state }}" placeholder="State"><br>
-    <input name="zip" value="{{ lead.zip }}" placeholder="Zip"><br>
-    <input name="country" value="{{ lead.country }}" placeholder="Country"><br>
-    <input name="last_contacted" value="{{ lead.last_contacted }}" placeholder="Last Contacted"><br>
-    <input name="next_step" value="{{ lead.next_step }}" placeholder="Next Step"><br>
-    <input name="status" value="{{ lead.status }}" placeholder="Status"><br>
-    <textarea name="notes" placeholder="Notes">{{ lead.notes }}</textarea><br>
-    <button>Save Changes</button>
+    <div class="row">
+      <div class="col-md-6">
+        <input name="name" class="form-control mb-3" value="{{ lead.name }}" placeholder="Name">
+        <input name="email" class="form-control mb-3" value="{{ lead.email }}" placeholder="Email">
+        <input name="phone" class="form-control mb-3" value="{{ lead.phone }}" placeholder="Phone">
+        <input name="address" class="form-control mb-3" value="{{ lead.address }}" placeholder="Address">
+        <input name="city" class="form-control mb-3" value="{{ lead.city }}" placeholder="City">
+        <input name="state" class="form-control mb-3" value="{{ lead.state }}" placeholder="State">
+      </div>
+      <div class="col-md-6">
+        <input name="zip" class="form-control mb-3" value="{{ lead.zip }}" placeholder="Zip">
+        <input name="country" class="form-control mb-3" value="{{ lead.country }}" placeholder="Country">
+        <input name="last_contacted" class="form-control mb-3" value="{{ lead.last_contacted }}" placeholder="Last Contacted">
+        <input name="next_step" class="form-control mb-3" value="{{ lead.next_step }}" placeholder="Next Step">
+        <input name="status" class="form-control mb-3" value="{{ lead.status }}" placeholder="Status">
+        <textarea name="notes" class="form-control mb-3" placeholder="Notes">{{ lead.notes }}</textarea>
+      </div>
+    </div>
+    <button class="btn btn-primary">Save Changes</button>
   </form>
-</body>
-</html>
+</div>
+{% endblock %}

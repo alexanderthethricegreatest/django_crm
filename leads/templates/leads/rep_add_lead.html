@@ -1,40 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Lead</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 1rem;
-      margin: 0;
-    }
-
-    input, textarea, button {
-      width: 100%;
-      margin-bottom: 0.75rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-  </style>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
   <h2>Add Lead</h2>
   <form method="post">{% csrf_token %}
-    <input name="name" placeholder="Name"><br>
-    <input name="email" placeholder="Email"><br>
-    <input name="phone" placeholder="Phone"><br>
-    <input name="address" placeholder="Address"><br>
-    <input name="city" placeholder="City"><br>
-    <input name="state" placeholder="State"><br>
-    <input name="zip" placeholder="Zip"><br>
-    <input name="country" placeholder="Country"><br>
-    <input name="last_contacted" placeholder="Last Contacted"><br>
-    <input name="next_step" placeholder="Next Step"><br>
-    <input name="status" placeholder="Status"><br>
-    <textarea name="notes" placeholder="Notes"></textarea><br>
-    <button>Add Lead</button>
+    <div class="row">
+      <div class="col-md-6">
+        <input name="name" class="form-control mb-3" placeholder="Name">
+        <input name="email" class="form-control mb-3" placeholder="Email">
+        <input name="phone" class="form-control mb-3" placeholder="Phone">
+        <input name="address" class="form-control mb-3" placeholder="Address">
+        <input name="city" class="form-control mb-3" placeholder="City">
+        <input name="state" class="form-control mb-3" placeholder="State">
+      </div>
+      <div class="col-md-6">
+        <input name="zip" class="form-control mb-3" placeholder="Zip">
+        <input name="country" class="form-control mb-3" placeholder="Country">
+        <input name="last_contacted" class="form-control mb-3" placeholder="Last Contacted">
+        <input name="next_step" class="form-control mb-3" placeholder="Next Step">
+        <input name="status" class="form-control mb-3" placeholder="Status">
+        <textarea name="notes" class="form-control mb-3" placeholder="Notes"></textarea>
+      </div>
+    </div>
+    <button class="btn btn-success">Add Lead</button>
   </form>
-</body>
-</html>
+</div>
+{% endblock %}
