@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Lead</title></head>
+<body>
+  <h2>Edit Lead</h2>
+  <form method="post">{% csrf_token %}
+    <input name="name" value="{{ lead.name }}" placeholder="Name"><br>
+    <input name="email" value="{{ lead.email }}" placeholder="Email"><br>
+    <input name="phone" value="{{ lead.phone }}" placeholder="Phone"><br>
+    <input name="address" value="{{ lead.address }}" placeholder="Address"><br>
+    <input name="city" value="{{ lead.city }}" placeholder="City"><br>
+    <input name="state" value="{{ lead.state }}" placeholder="State"><br>
+    <input name="zip" value="{{ lead.zip }}" placeholder="Zip"><br>
+    <input name="country" value="{{ lead.country }}" placeholder="Country"><br>
+    <input name="last_contacted" value="{{ lead.last_contacted }}" placeholder="Last Contacted"><br>
+    <input name="next_step" value="{{ lead.next_step }}" placeholder="Next Step"><br>
+    <input name="status" value="{{ lead.status }}" placeholder="Status"><br>
+    <textarea name="notes" placeholder="Notes">{{ lead.notes }}</textarea><br>
+    <button>Save Changes</button>
+  </form>
+</body>
+</html>

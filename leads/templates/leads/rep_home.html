@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Sales Rep Portal</title></head>
+<body>
+  <h2>Welcome Sales Rep</h2>
+  <a href="{% url 'rep_add_lead' %}">Add New Lead</a>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Last Contacted</th><th>Actions</th>
+    </tr>
+    {% for lead in leads %}
+    <tr>
+      <td>{{ lead.name }}</td><td>{{ lead.email }}</td><td>{{ lead.phone }}</td>
+      <td>{{ lead.status }}</td><td>{{ lead.last_contacted }}</td>
+      <td>
+        {% if lead.created_by == user %}
+          <a href="{% url 'rep_edit_lead' lead.id %}">Edit</a>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
