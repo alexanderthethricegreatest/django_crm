@@ -1,11 +1,13 @@
 import os
-from pathlib import Path
+from pathlib import Path 
+import dj_database_url 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-please-replace-this'
 DEBUG = False
 ALLOWED_HOSTS = ['*']
+LOGIN_URL = '/admin/login/'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,12 +53,7 @@ WSGI_APPLICATION = 'mysite.wsgi:application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+         'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
     }
 }
 
