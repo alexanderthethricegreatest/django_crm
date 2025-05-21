@@ -17,3 +17,11 @@ def dashboard(request):
         "closed": closed,
         "pie_data": pie_data
     })
+
+@login_required
+def leads_list(request):
+    query = request.GET.get("q", "")
+    leads = Lead.objects.all()
+    if query:
+        leads = leads.filter(name__icontains=query)
+    return render(request, "leads/list.html", {"leads": leads, "query": query})
