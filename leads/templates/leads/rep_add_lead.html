@@ -1,6 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head><title>Add Lead</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Lead</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      margin: 0;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
 <body>
   <h2>Add Lead</h2>
   <form method="post">{% csrf_token %}

@@ -1,24 +1,83 @@
 <!DOCTYPE html>
-<html>
-<head><title>Sales Rep Portal</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Rep Portal</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+      }
+
+      td::before {
+        position: absolute;
+        left: 1rem;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
 <body>
   <h2>Welcome Sales Rep</h2>
   <a href="{% url 'rep_add_lead' %}">Add New Lead</a>
   <table border="1" cellpadding="5">
-    <tr>
-      <th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Last Contacted</th><th>Actions</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Last Contacted</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
     {% for lead in leads %}
-    <tr>
-      <td>{{ lead.name }}</td><td>{{ lead.email }}</td><td>{{ lead.phone }}</td>
-      <td>{{ lead.status }}</td><td>{{ lead.last_contacted }}</td>
-      <td>
-        {% if lead.created_by == user %}
-          <a href="{% url 'rep_edit_lead' lead.id %}">Edit</a>
-        {% endif %}
-      </td>
-    </tr>
+      <tr>
+        <td data-label="Name">{{ lead.name }}</td>
+        <td data-label="Email">{{ lead.email }}</td>
+        <td data-label="Phone">{{ lead.phone }}</td>
+        <td data-label="Status">{{ lead.status }}</td>
+        <td data-label="Last Contacted">{{ lead.last_contacted }}</td>
+        <td data-label="Actions">
+          {% if lead.created_by == user %}
+            <a href="{% url 'rep_edit_lead' lead.id %}">Edit</a>
+          {% endif %}
+        </td>
+      </tr>
     {% endfor %}
+    </tbody>
   </table>
 </body>
 </html>
