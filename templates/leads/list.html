@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-3">All Leads</h2>
+  <a class="btn btn-primary mb-3" href="{% url 'lead_add' %}">+ Add Lead</a>
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle text-nowrap">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Last Contacted</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lead in leads %}
+        <tr>
+          <td>{{ lead.name }}</td>
+          <td>{{ lead.email }}</td>
+          <td>{{ lead.phone }}</td>
+          <td>{{ lead.status }}</td>
+          <td>{{ lead.last_contacted }}</td>
+          <td>
+            <a href="{% url 'lead_edit' lead.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+  <h2>Welcome Sales Rep</h2>
+  <a class="btn btn-primary mb-3" href="{% url 'rep_add_lead' %}">Add New Lead</a>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Last Contacted</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for lead in leads %}
+        <tr>
+          <td>{{ lead.name }}</td>
+          <td>{{ lead.email }}</td>
+          <td>{{ lead.phone }}</td>
+          <td>{{ lead.status }}</td>
+          <td>{{ lead.last_contacted }}</td>
+          <td>
+            {% if lead.created_by == user %}
+              <a href="{% url 'rep_edit_lead' lead.id %}">Edit</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

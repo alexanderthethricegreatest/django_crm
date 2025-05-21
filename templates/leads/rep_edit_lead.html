@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+  <h2>Edit Lead</h2>
+  <form method="post">{% csrf_token %}
+    <div class="row">
+      <div class="col-md-6">
+        <input name="name" class="form-control mb-3" value="{{ lead.name }}" placeholder="Name">
+        <input name="email" class="form-control mb-3" value="{{ lead.email }}" placeholder="Email">
+        <input name="phone" class="form-control mb-3" value="{{ lead.phone }}" placeholder="Phone">
+        <input name="address" class="form-control mb-3" value="{{ lead.address }}" placeholder="Address">
+        <input name="city" class="form-control mb-3" value="{{ lead.city }}" placeholder="City">
+        <input name="state" class="form-control mb-3" value="{{ lead.state }}" placeholder="State">
+      </div>
+      <div class="col-md-6">
+        <input name="zip" class="form-control mb-3" value="{{ lead.zip }}" placeholder="Zip">
+        <input name="country" class="form-control mb-3" value="{{ lead.country }}" placeholder="Country">
+        <input name="last_contacted" class="form-control mb-3" value="{{ lead.last_contacted }}" placeholder="Last Contacted">
+        <input name="next_step" class="form-control mb-3" value="{{ lead.next_step }}" placeholder="Next Step">
+        <input name="status" class="form-control mb-3" value="{{ lead.status }}" placeholder="Status">
+        <textarea name="notes" class="form-control mb-3" placeholder="Notes">{{ lead.notes }}</textarea>
+      </div>
+    </div>
+    <button class="btn btn-primary">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

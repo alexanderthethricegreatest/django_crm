@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+  <h2>Add Lead</h2>
+  <form method="post">{% csrf_token %}
+    <div class="row">
+      <div class="col-md-6">
+        <input name="name" class="form-control mb-3" placeholder="Name">
+        <input name="email" class="form-control mb-3" placeholder="Email">
+        <input name="phone" class="form-control mb-3" placeholder="Phone">
+        <input name="address" class="form-control mb-3" placeholder="Address">
+        <input name="city" class="form-control mb-3" placeholder="City">
+        <input name="state" class="form-control mb-3" placeholder="State">
+      </div>
+      <div class="col-md-6">
+        <input name="zip" class="form-control mb-3" placeholder="Zip">
+        <input name="country" class="form-control mb-3" placeholder="Country">
+        <input name="last_contacted" class="form-control mb-3" placeholder="Last Contacted">
+        <input name="next_step" class="form-control mb-3" placeholder="Next Step">
+        <input name="status" class="form-control mb-3" placeholder="Status">
+        <textarea name="notes" class="form-control mb-3" placeholder="Notes"></textarea>
+      </div>
+    </div>
+    <button class="btn btn-success">Add Lead</button>
+  </form>
+</div>
+{% endblock %}
