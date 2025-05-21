@@ -13,7 +13,9 @@
   <link href="favicon.ico" rel="shortcut icon"/>
   <!-- FontAwesome JS-->
   <!-- App CSS -->
-  <link href="assets/css/portal.css" id="theme-style" rel="stylesheet"/>
+  {% load static %}  
+<link rel="stylesheet" href="{% static 'theme/assets/css/portal.css' %}">
+<script src="{% static 'theme/assets/js/app.js' %}"></script>
  </head>
  <body>
   {% load static %}
